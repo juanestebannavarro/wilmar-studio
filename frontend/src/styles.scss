@@ -12,11 +12,14 @@
   --accent: var(--red);
   --accent-hover: var(--red-hover);
 
-  --pole: linear-gradient(
+    --pole: linear-gradient(
     135deg,
-    var(--red) 0 33.33%,
-    var(--paper) 33.33% 66.66%,
-    var(--blue) 66.66% 100%
+    var(--red) 0 16.66%,
+    var(--paper) 16.66% 33.33%,
+    var(--blue) 33.33% 50%,
+    var(--red) 50% 66.66%,
+    var(--paper) 66.66% 83.33%,
+    var(--blue) 83.33% 100%
   );
 
   --font-display: 'Big Shoulders Display', 'Arial Narrow', sans-serif;
