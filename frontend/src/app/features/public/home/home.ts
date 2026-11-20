@@ -40,4 +40,20 @@ export class Home {
       frase: 'El de siempre, mejor que nunca.',
     },
   ];
+
+  protected readonly pasos = [
+    { titulo: 'Elige tu estilo', texto: 'Explora el catálogo y guarda tus favoritos.' },
+    { titulo: 'Saca tu turno', texto: 'Elige tus extras. Conoce tu espera antes de llegar.' },
+    { titulo: 'Llega a tu momento', texto: 'Sigue la fila y ven listo para renovar tu look.' },
+  ];
+
+  // Precios iniciales del negocio. Wilmar los podrá modificar desde su panel.
+  protected readonly precios = [
+    { servicio: 'Corte normal', valor: '$16.000' },
+    { servicio: 'Corte domingos y festivos', valor: '$18.000' },
+    { servicio: 'Barba', valor: '+$3.000' },
+    { servicio: 'Cejas', valor: '+$3.000' },
+    { servicio: 'Diseños', valor: '+$3.000' },
+    { servicio: 'Lavado', valor: '+$3.000' },
+  ];
 }

@@ -104,3 +104,46 @@
     </p>
   </div>
 </section>
+<section class="steps" aria-labelledby="steps-title">
+  <div class="container">
+    <h2 id="steps-title" class="steps__title">Así de fácil</h2>
+    <ol class="steps__list">
+      @for (paso of pasos; track paso.titulo; let i = $index) {
+        <li class="step">
+          <span class="step__n" aria-hidden="true">{{ i + 1 }}</span>
+          <div>
+            <h3 class="step__title">{{ paso.titulo }}</h3>
+            <p class="step__text">{{ paso.texto }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="prices">
+  <div class="prices__inner container">
+    <div class="prices__intro">
+      <h2 class="prices__title">Buen corte. Precio claro.</h2>
+      <p>
+        Técnica, atención al detalle y un acabado que se nota. Elige lo que necesitas, sin
+        sorpresas.
+      </p>
+      <a routerLink="/servicios" class="btn btn--ghost">Servicios y precios</a>
+    </div>
+
+    <div>
+      <dl class="prices__list">
+        @for (p of precios; track p.servicio) {
+          <div class="price">
+            <dt>{{ p.servicio }}</dt>
+            <dd>{{ p.valor }}</dd>
+          </div>
+        }
+      </dl>
+      <p class="prices__note">
+        Valores en COP. Los adicionales son aproximados y Wilmar puede ajustarlos.
+      </p>
+    </div>
+  </div>
+</section>
