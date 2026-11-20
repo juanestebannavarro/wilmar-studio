@@ -1,0 +1,149 @@
+<section class="hero">
+  <div class="hero__inner container">
+    <div class="hero__copy">
+      <h1 class="hero__title">
+        <span>Tu estilo.</span>
+        <span>Tu turno.</span>
+        <span>Tu barbería.</span>
+      </h1>
+      <p class="hero__lead">Un buen corte comienza con una buena elección.</p>
+      <div class="hero__actions">
+        <a routerLink="/turno" class="btn btn--primary">Sacar mi turno</a>
+        <a routerLink="/catalogo" class="btn btn--ghost">Explorar estilos</a>
+      </div>
+      <p class="hero__note">Sin citas complicadas. Sin perder tu día.</p>
+    </div>
+
+    <div class="pole" aria-hidden="true">
+      <span class="pole__cap"></span>
+      <span class="pole__glass"></span>
+      <span class="pole__cap"></span>
+    </div>
+  </div>
+</section>
+
+<section class="queue" aria-label="Estado de la fila">
+  <div class="queue__inner container">
+    <div class="queue__status">
+      <p class="chip" [class.chip--open]="fila.abierta">
+        <span class="chip__dot"></span>{{ fila.abierta ? 'Abierta' : 'Cerrada' }}
+      </p>
+      <p class="queue__title">Tu tiempo también importa.</p>
+    </div>
+
+    <dl class="queue__stats">
+      <div>
+        <dt>En atención</dt>
+        <dd>#{{ fila.enAtencion }}</dd>
+      </div>
+      <div>
+        <dt>Esperando</dt>
+        <dd>{{ fila.esperando }}</dd>
+      </div>
+      <div>
+        <dt>Espera aprox.</dt>
+        <dd>{{ fila.minutosEspera }} min</dd>
+      </div>
+    </dl>
+
+    <a routerLink="/mi-turno" class="btn btn--ghost queue__btn">Consultar mi turno</a>
+
+    <p class="queue__demo">
+      Datos de demostración. La fila real se conecta cuando exista el sistema de turnos.
+    </p>
+  </div>
+</section>
+<section class="styles">
+  <div class="container">
+    <header class="styles__head">
+      <h2 class="styles__title">No es solo un corte. Es cómo te llevas.</h2>
+      <div class="styles__side">
+        <p>
+          Guarda lo que va contigo. Muéstrale a Wilmar hasta tres referencias y construyan tu
+          próximo look.
+        </p>
+        <a routerLink="/catalogo" class="btn btn--ghost">Ver todo el catálogo</a>
+      </div>
+    </header>
+
+    <ul class="styles__grid">
+      @for (estilo of estilos; track estilo.id) {
+        <li class="card">
+          <div class="card__photo">
+            <span>Foto pendiente</span>
+            <button
+              type="button"
+              class="heart"
+              [class.heart--on]="wili.esFavorito(estilo.id)"
+              [attr.aria-pressed]="wili.esFavorito(estilo.id)"
+              [attr.aria-label]="
+                (wili.esFavorito(estilo.id) ? 'Quitar de tu WiliList: ' : 'Guardar en tu WiliList: ') +
+                estilo.nombre
+              "
+              (click)="wili.alternar(estilo.id)"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 2.7 4.5 6.4 4.5c2 0 3.7 1.1 5.6 3.2 1.9-2.1 3.6-3.2 5.6-3.2 3.7 0 5.5 3.8 4 7.2C19.5 16.4 12 21 12 21z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="card__body">
+            <p class="card__cat">{{ estilo.categoria }}</p>
+            <h3 class="card__name">{{ estilo.nombre }}</h3>
+            <p class="card__text">{{ estilo.frase }}</p>
+            <a routerLink="/turno" class="btn btn--ghost card__btn">Quiero este estilo</a>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <p class="styles__demo">
+      Estilos de demostración. El catálogo real lo administra Wilmar desde su panel.
+    </p>
+  </div>
+</section>
+<section class="steps" aria-labelledby="steps-title">
+  <div class="container">
+    <h2 id="steps-title" class="steps__title">Así de fácil</h2>
+    <ol class="steps__list">
+      @for (paso of pasos; track paso.titulo; let i = $index) {
+        <li class="step">
+          <span class="step__n" aria-hidden="true">{{ i + 1 }}</span>
+          <div>
+            <h3 class="step__title">{{ paso.titulo }}</h3>
+            <p class="step__text">{{ paso.texto }}</p>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<section class="prices">
+  <div class="prices__inner container">
+    <div class="prices__intro">
+      <h2 class="prices__title">Buen corte. Precio claro.</h2>
+      <p>
+        Técnica, atención al detalle y un acabado que se nota. Elige lo que necesitas, sin
+        sorpresas.
+      </p>
+      <a routerLink="/servicios" class="btn btn--ghost">Servicios y precios</a>
+    </div>
+
+    <div>
+      <dl class="prices__list">
+        @for (p of precios; track p.servicio) {
+          <div class="price">
+            <dt>{{ p.servicio }}</dt>
+            <dd>{{ p.valor }}</dd>
+          </div>
+        }
+      </dl>
+      <p class="prices__note">
+        Valores en COP. Los adicionales son aproximados y Wilmar puede ajustarlos.
+      </p>
+    </div>
+  </div>
+</section>
