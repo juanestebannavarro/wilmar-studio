@@ -1,1 +1,35 @@
-<p>navbar works!</p>
+<header class="nav">
+  <div class="nav__bar container">
+    <a routerLink="/" class="brand" (click)="close()" aria-label="WilmarBarber, ir al inicio">
+      <span class="brand__pole" aria-hidden="true"></span>
+      <span class="brand__name">Wilmar<span class="brand__thin">Barber</span></span>
+    </a>
+
+    <nav id="menu" class="menu" [class.menu--open]="open()" aria-label="Principal">
+      @for (link of links; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: link.exact }"
+          (click)="close()"
+          >{{ link.label }}</a
+        >
+      }
+    </nav>
+
+    <a routerLink="/turno" class="btn btn--primary nav__cta" (click)="close()">Sacar mi turno</a>
+
+    <button
+      class="burger"
+      type="button"
+      (click)="toggle()"
+      [attr.aria-expanded]="open()"
+      aria-controls="menu"
+      aria-label="Abrir o cerrar el menú"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="pole-strip" aria-hidden="true"></div>
+</header>
