@@ -56,4 +56,7 @@ export class Home {
     { servicio: 'Diseños', valor: '+$3.000' },
     { servicio: 'Lavado', valor: '+$3.000' },
   ];
+
+  // Marcadores de la galería: se reemplazan por fotos reales que administra Wilmar.
+  protected readonly galeria = [1, 2, 3];
 }
