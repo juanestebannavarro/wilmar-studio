@@ -1,59 +1,68 @@
-# Frontend
+# WilmarBarber
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.30.
+Plataforma web para la barbería de Wilmar, «El Niche», en el barrio Ciudad Dorada, Armenia, Quindío (Colombia). Reemplaza los turnos por WhatsApp con una fila inteligente que el cliente puede seguir desde su celular, y le da a Wilmar un panel muy sencillo para administrar el negocio.
 
-## Development server
+> Estado: en desarrollo. El nombre es provisional.
 
-To start a local development server, run:
+## Estado del proyecto
 
-```bash
-ng serve
-```
+| Fase | Contenido | Estado |
+| --- | --- | --- |
+| 1 | Estructura, Angular, backend, Prisma, PostgreSQL, documentación | Frontend listo. Backend pendiente |
+| 2 | Identidad visual, layout público, navegación, responsive | Hecho en el frontend |
+| 3 | Base de datos, modelos, API, autenticación | Pendiente |
+| 4 | Catálogo, WiliList, servicios, galería | Vista previa en inicio. Falta lo demás |
+| 5 | Turnos, reservas, fila en tiempo real, notificaciones | Pendiente |
+| 6 | Pagos, reseñas, panel administrativo | Pendiente |
+| 7 | Estadísticas, PWA, QR, seguridad, pruebas | Pendiente |
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Requisitos
 
-## Code scaffolding
+- Node.js 20.19 o superior, 22.12 o superior, o 24 (probado con 24)
+- npm
+- Git
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Cómo ejecutar el frontend
 
 ```bash
-ng build
+cd frontend
+npm install
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Se abre en `http://localhost:4200/`. Para compilar en modo producción: `npm run build`.
 
-## Running unit tests
+## Estructura
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```
+wilmar-studio/
+├── frontend/   Angular 21 (core, shared, features con carga diferida)
+├── backend/    Node.js con arquitectura hexagonal (pendiente)
+├── docs/       Decisiones y guías
+└── README.md
 ```
 
-## Running end-to-end tests
+Dentro de `frontend/src/app/`:
 
-For end-to-end (e2e) testing, run:
+- `core/`: servicios globales (por ejemplo, la WiliList).
+- `shared/`: piezas reutilizables (navbar, footer).
+- `features/`: `public/`, `turnos/` y `admin/`, cada página se carga solo cuando se visita.
 
-```bash
-ng e2e
-```
+## Ramas y commits
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- `main`: solo código estable.
+- `develop`: integración.
+- `feature/<tema>`: trabajo de cada parte, que se une a `develop` al compilar sin errores.
 
-## Additional Resources
+Mensajes de commit: `feat:`, `fix:`, `style:`, `docs:`, `chore:`, `merge:`.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Datos de demostración
+
+Todo lo que aún no es real está marcado como demostración en pantalla y en el código: la fila (#20, 3 esperando), los estilos del catálogo y los marcadores de foto. No hay opiniones inventadas.
+
+## Pendientes por confirmar con el negocio
+
+- Número de WhatsApp y dirección exacta.
+- Horario definitivo (por ahora, aproximado de 12:00 m. a 10:00 p. m.).
+- Fotos reales de Wilmar, de los cortes y de la galería.
+- Valores finales de los servicios adicionales (hoy, aproximados en $3.000 COP).
