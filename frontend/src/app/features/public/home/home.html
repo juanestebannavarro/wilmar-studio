@@ -1,1 +1,55 @@
-<p>home works!</p>
+<section class="hero">
+  <div class="hero__inner container">
+    <div class="hero__copy">
+      <h1 class="hero__title">
+        <span>Tu estilo.</span>
+        <span>Tu turno.</span>
+        <span>Tu barbería.</span>
+      </h1>
+      <p class="hero__lead">Un buen corte comienza con una buena elección.</p>
+      <div class="hero__actions">
+        <a routerLink="/turno" class="btn btn--primary">Sacar mi turno</a>
+        <a routerLink="/catalogo" class="btn btn--ghost">Explorar estilos</a>
+      </div>
+      <p class="hero__note">Sin citas complicadas. Sin perder tu día.</p>
+    </div>
+
+    <div class="pole" aria-hidden="true">
+      <span class="pole__cap"></span>
+      <span class="pole__glass"></span>
+      <span class="pole__cap"></span>
+    </div>
+  </div>
+</section>
+
+<section class="queue" aria-label="Estado de la fila">
+  <div class="queue__inner container">
+    <div class="queue__status">
+      <p class="chip" [class.chip--open]="fila.abierta">
+        <span class="chip__dot"></span>{{ fila.abierta ? 'Abierta' : 'Cerrada' }}
+      </p>
+      <p class="queue__title">Tu tiempo también importa.</p>
+    </div>
+
+    <dl class="queue__stats">
+      <div>
+        <dt>En atención</dt>
+        <dd>#{{ fila.enAtencion }}</dd>
+      </div>
+      <div>
+        <dt>Esperando</dt>
+        <dd>{{ fila.esperando }}</dd>
+      </div>
+      <div>
+        <dt>Espera aprox.</dt>
+        <dd>{{ fila.minutosEspera }} min</dd>
+      </div>
+    </dl>
+
+    <a routerLink="/mi-turno" class="btn btn--ghost queue__btn">Consultar mi turno</a>
+
+    <p class="queue__demo">
+      Datos de demostración. La fila real se conecta cuando exista el sistema de turnos.
+    </p>
+  </div>
+</section>
