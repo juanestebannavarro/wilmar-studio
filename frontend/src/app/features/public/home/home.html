@@ -53,3 +53,54 @@
     </p>
   </div>
 </section>
+<section class="styles">
+  <div class="container">
+    <header class="styles__head">
+      <h2 class="styles__title">No es solo un corte. Es cómo te llevas.</h2>
+      <div class="styles__side">
+        <p>
+          Guarda lo que va contigo. Muéstrale a Wilmar hasta tres referencias y construyan tu
+          próximo look.
+        </p>
+        <a routerLink="/catalogo" class="btn btn--ghost">Ver todo el catálogo</a>
+      </div>
+    </header>
+
+    <ul class="styles__grid">
+      @for (estilo of estilos; track estilo.id) {
+        <li class="card">
+          <div class="card__photo">
+            <span>Foto pendiente</span>
+            <button
+              type="button"
+              class="heart"
+              [class.heart--on]="wili.esFavorito(estilo.id)"
+              [attr.aria-pressed]="wili.esFavorito(estilo.id)"
+              [attr.aria-label]="
+                (wili.esFavorito(estilo.id) ? 'Quitar de tu WiliList: ' : 'Guardar en tu WiliList: ') +
+                estilo.nombre
+              "
+              (click)="wili.alternar(estilo.id)"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 2.7 4.5 6.4 4.5c2 0 3.7 1.1 5.6 3.2 1.9-2.1 3.6-3.2 5.6-3.2 3.7 0 5.5 3.8 4 7.2C19.5 16.4 12 21 12 21z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="card__body">
+            <p class="card__cat">{{ estilo.categoria }}</p>
+            <h3 class="card__name">{{ estilo.nombre }}</h3>
+            <p class="card__text">{{ estilo.frase }}</p>
+            <a routerLink="/turno" class="btn btn--ghost card__btn">Quiero este estilo</a>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <p class="styles__demo">
+      Estilos de demostración. El catálogo real lo administra Wilmar desde su panel.
+    </p>
+  </div>
+</section>
