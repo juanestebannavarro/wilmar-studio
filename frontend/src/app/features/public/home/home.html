@@ -1,4 +1,4 @@
-<section class="hero">
+﻿<section class="hero">
   <div class="hero__inner container">
     <div class="hero__copy">
       <h1 class="hero__title">
@@ -53,6 +53,7 @@
     </p>
   </div>
 </section>
+
 <section class="styles">
   <div class="container">
     <header class="styles__head">
@@ -66,36 +67,9 @@
       </div>
     </header>
 
-    <ul class="styles__grid">
-      @for (estilo of estilos; track estilo.id) {
-        <li class="card">
-          <div class="card__photo">
-            <span>Foto pendiente</span>
-            <button
-              type="button"
-              class="heart"
-              [class.heart--on]="wili.esFavorito(estilo.id)"
-              [attr.aria-pressed]="wili.esFavorito(estilo.id)"
-              [attr.aria-label]="
-                (wili.esFavorito(estilo.id) ? 'Quitar de tu WiliList: ' : 'Guardar en tu WiliList: ') +
-                estilo.nombre
-              "
-              (click)="wili.alternar(estilo.id)"
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 2.7 4.5 6.4 4.5c2 0 3.7 1.1 5.6 3.2 1.9-2.1 3.6-3.2 5.6-3.2 3.7 0 5.5 3.8 4 7.2C19.5 16.4 12 21 12 21z"
-                />
-              </svg>
-            </button>
-          </div>
-          <div class="card__body">
-            <p class="card__cat">{{ estilo.categoria }}</p>
-            <h3 class="card__name">{{ estilo.nombre }}</h3>
-            <p class="card__text">{{ estilo.frase }}</p>
-            <a routerLink="/turno" class="btn btn--ghost card__btn">Quiero este estilo</a>
-          </div>
-        </li>
+    <ul class="estilos-grid">
+      @for (estilo of destacados(); track estilo.id) {
+        <li><app-style-card [estilo]="estilo" /></li>
       }
     </ul>
 
@@ -104,6 +78,7 @@
     </p>
   </div>
 </section>
+
 <section class="steps" aria-labelledby="steps-title">
   <div class="container">
     <h2 id="steps-title" class="steps__title">Así de fácil</h2>
@@ -144,6 +119,75 @@
       <p class="prices__note">
         Valores en COP. Los adicionales son aproximados y Wilmar puede ajustarlos.
       </p>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="about__inner container">
+    <div class="about__photo ph"><span>Foto de Wilmar pendiente</span></div>
+    <div class="about__copy">
+      <h2 class="about__title">Detrás de cada corte.</h2>
+      <p>
+        Wilmar, conocido como «El Niche», atiende solo en el barrio Ciudad Dorada, en Armenia.
+        Aquí sacas tu turno en línea y sigues la fila desde tu celular.
+      </p>
+      <p class="note">Texto provisional. Wilmar lo reemplaza con su propia presentación.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <header class="gallery__head">
+      <h2 class="gallery__title">Trabajo real. Estilo propio.</h2>
+      <a routerLink="/galeria" class="btn btn--ghost">Explorar galería</a>
+    </header>
+    <ul class="gallery__grid">
+      @for (foto of galeria; track foto) {
+        <li class="gallery__item ph"><span>Foto pendiente</span></li>
+      }
+    </ul>
+    <p class="note">La galería real la administra Wilmar desde su panel.</p>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="reviews__inner container">
+    <div>
+      <h2 class="reviews__title">Se nota al salir.</h2>
+      <p class="stars" aria-label="Sin calificaciones todavía">☆☆☆☆☆</p>
+      <p class="reviews__sub">Aún sin opiniones</p>
+    </div>
+    <div class="reviews__empty">
+      <p>
+        Las opiniones aparecen aquí cuando los clientes completan su turno y Wilmar las aprueba.
+      </p>
+      <a routerLink="/opiniones" class="btn btn--ghost">Ver opiniones</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta__inner container">
+    <div class="cta__copy">
+      <h2 class="cta__title">Tu próximo look empieza aquí.</h2>
+      <a routerLink="/turno" class="btn btn--primary">Sacar mi turno</a>
+      <p class="cta__place">Barrio Ciudad Dorada, Armenia, Quindío</p>
+    </div>
+
+    <div class="visit">
+      <p class="chip" [class.chip--open]="fila.abierta">
+        <span class="chip__dot"></span>{{ fila.abierta ? 'Abierta' : 'Cerrada' }}
+      </p>
+      <h3 class="visit__title">Planea tu visita</h3>
+      <p>Horario habitual aproximado: de 12:00 m. a 10:00 p. m.</p>
+      <p class="visit__note">
+        Wilmar puede cambiar el horario de cada día. Dirección exacta y WhatsApp por confirmar.
+      </p>
+      <button type="button" class="btn btn--ghost visit__btn" disabled>
+        WhatsApp: por confirmar
+      </button>
     </div>
   </div>
 </section>

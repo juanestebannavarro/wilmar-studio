@@ -1,1 +1,59 @@
-<p>catalogo works!</p>
+﻿<section class="page container">
+  <header>
+    <h1 class="page__title">Catálogo</h1>
+    <p class="page__lead">
+      Inspiración para tu próximo corte. Es solo una guía: no es una lista cerrada de lo que
+      Wilmar puede hacer.
+    </p>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filtrar estilos">
+    <button
+      type="button"
+      class="pill"
+      [class.pill--on]="seleccion() === null"
+      [attr.aria-pressed]="seleccion() === null"
+      (click)="elegir(null)"
+    >
+      Todos
+    </button>
+    @for (categoria of categorias; track categoria) {
+      <button
+        type="button"
+        class="pill"
+        [class.pill--on]="seleccion() === categoria"
+        [attr.aria-pressed]="seleccion() === categoria"
+        (click)="elegir(categoria)"
+      >
+        {{ categoria }}
+      </button>
+    }
+    <button
+      type="button"
+      class="pill pill--heart"
+      [class.pill--on]="soloFavoritos()"
+      [attr.aria-pressed]="soloFavoritos()"
+      (click)="alternarFavoritos()"
+    >
+      Mis favoritos ({{ wili.total() }})
+    </button>
+  </div>
+
+  @if (visibles().length) {
+    <ul class="estilos-grid">
+      @for (estilo of visibles(); track estilo.id) {
+        <li><app-style-card [estilo]="estilo" /></li>
+      }
+    </ul>
+  } @else {
+    <p class="empty">
+      @if (soloFavoritos()) {
+        Todavía no guardaste favoritos aquí. Toca el corazón de un estilo para guardarlo.
+      } @else {
+        No hay estilos en esta categoría todavía.
+      }
+    </p>
+  }
+
+  <p class="note">Estilos de demostración. El catálogo real lo administra Wilmar desde su panel.</p>
+</section>

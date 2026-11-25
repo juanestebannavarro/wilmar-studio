@@ -1,15 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { WililistService } from '../../../core/wililist/wililist.service';
+import { CatalogoService } from '../../../core/catalogo/catalogo.service';
+import { StyleCard } from '../../../shared/ui/style-card/style-card';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, StyleCard],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
-  protected readonly wili = inject(WililistService);
+  protected readonly destacados = inject(CatalogoService).destacados;
 
   // DATOS DE DEMOSTRACIÓN: se reemplazan por la API cuando exista el backend.
   protected readonly fila = {
@@ -18,28 +19,6 @@ export class Home {
     esperando: 3,
     minutosEspera: 45,
   };
-
-  // ESTILOS DE DEMOSTRACIÓN: el catálogo real lo administra Wilmar.
-  protected readonly estilos = [
-    {
-      id: 'demo-fade',
-      categoria: 'Fade',
-      nombre: 'Low fade texturizado',
-      frase: 'Degradado limpio. Textura con actitud.',
-    },
-    {
-      id: 'demo-crop',
-      categoria: 'Crop y modernos',
-      nombre: 'French crop',
-      frase: 'Flequillo definido, carácter sin esfuerzo.',
-    },
-    {
-      id: 'demo-clasico',
-      categoria: 'Clásicos',
-      nombre: 'Clásico con taper',
-      frase: 'El de siempre, mejor que nunca.',
-    },
-  ];
 
   protected readonly pasos = [
     { titulo: 'Elige tu estilo', texto: 'Explora el catálogo y guarda tus favoritos.' },

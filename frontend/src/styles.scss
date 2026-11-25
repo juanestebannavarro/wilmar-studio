@@ -136,3 +136,21 @@ img { max-width: 100%; display: block; }
   .pole-strip { animation: none; }
   .btn { transition: none; }
 }
+
+/* Cuadrícula de estilos (inicio y catálogo) */
+.estilos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.estilos-grid > li {
+  display: flex;
+}
+
+@media (min-width: 700px) {
+  .estilos-grid { grid-template-columns: repeat(3, 1fr); }
+}
