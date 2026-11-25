@@ -1,0 +1,71 @@
+.page {
+  padding-block: 2.5rem 3rem;
+}
+
+.page__lead {
+  margin: 0.5rem 0 1.5rem;
+  color: #a5a9b0;
+  font-size: 0.95rem;
+  max-width: 60ch;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.pill {
+  padding: 0.45rem 0.95rem;
+  border: 1px solid #34373d;
+  border-radius: 999px;
+  background: transparent;
+  color: #e6e7ea;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+
+  &:hover {
+    border-color: #e8222d;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #e8222d;
+    outline-offset: 2px;
+  }
+
+  &--on {
+    background: #e8222d;
+    border-color: #e8222d;
+    color: #fff;
+  }
+
+  &--heart {
+    margin-left: auto;
+  }
+}
+
+.estilos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  padding: 2rem 0;
+  color: #a5a9b0;
+}
+
+.note {
+  margin-top: 2rem;
+  color: #6f737b;
+  font-size: 0.8rem;
+}
